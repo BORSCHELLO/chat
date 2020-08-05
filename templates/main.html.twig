@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block body%}
+    {% for message in app.flashes('success') %}
+        <div id="my-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <script>
+                $(function(){
+                    window.setTimeout(function(){
+                        $('#my-alert').alert('close');
+                    },4000);
+                });
+            </script>
+        </div>
+    {% endfor %}
+    {{ app.session.get("user") }}
+    <a href="/">Выйти</a>
+    {% endblock %}

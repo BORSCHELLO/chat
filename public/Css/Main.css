@@ -3,3 +3,18 @@
     font-size:1.3em;
     font-weight: bold;
 }
+.mainBlock{
+    margin-top: 15px;
+    height: 100vh;
+    background-color: #effbfb;
+    width: auto;
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
+    border: solid red 3px;
+}
+.userName{
+    margin: 5px;
+}
+.messages{
+    border: solid red 1px;
+    padding: 8px;
+}

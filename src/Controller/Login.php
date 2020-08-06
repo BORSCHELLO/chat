@@ -32,6 +32,7 @@ class Login extends AbstractController
                 if($user){
                     $this->addFlash('success','С возвращением'.' '.$requestUser->getName());
                     $session->set('user', $user->getId());
+                    $session->set('userName', $user->getName());
                     return $this->redirectToRoute('main');
                 }else{
                     $em = $this->getDoctrine()->getManager();
@@ -40,6 +41,7 @@ class Login extends AbstractController
                     $em->flush();
                     $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['name' => $requestUser-> getName ()]);
                     $session->set('user', $user->getId());
+                    $session->set('userName', $user->getName());
                     return $this->redirectToRoute('main');
                 }
         }

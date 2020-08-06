@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\MesageRepository;
+use App\Repository\MessageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=MesageRepository::class)
+ * @ORM\Entity(repositoryClass=MessageRepository::class)
  */
-class Mesage
+class Message
 {
     /**
      * @ORM\Id()
@@ -20,10 +20,10 @@ class Mesage
     /**
      * @ORM\Column(type="string", length=1000)
      */
-    private $mesage;
+    private $message;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $created_at;
 
@@ -38,36 +38,36 @@ class Mesage
         return $this->id;
     }
 
-    public function getMesage(): ?string
+    public function getMessage(): ?string
     {
-        return $this->mesage;
+        return $this->message;
     }
 
-    public function setMesage(string $mesage): self
+    public function setMessage(string $message): self
     {
-        $this->mesage = $mesage;
+        $this->message = $message;
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt()
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreatedAt($created_at): self
     {
         $this->created_at = $created_at;
 
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getUser()
     {
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser($user): self
     {
         $this->user = $user;
 

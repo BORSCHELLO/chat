@@ -47,22 +47,5 @@ class Login extends AbstractController
             'form' => $form->createView()
         ));
     }
-
-    /**
-     *@Route("/main", name="main")
-     */
-    public function main()
-    {
-        return $this->render('main.html.twig');
-    }
-    /**
-     *@Route("#", name="logout")
-     */
-    public function logout()
-    {
-        $session=new Session();
-        $session->remove('user');
-        return $this->redirectToRoute('login');
-    }
 }
 

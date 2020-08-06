@@ -1,5 +1,16 @@
 {% extends 'base.html.twig' %}
 {% block body%}
+    <div class="container justify-content: space-between;">
+       <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class=" col-md-8 RedBoldText" href="#">BORSChat</a>
+        <div class="collapse navbar-collapse col-md-4" id="navbarTogglerDemo02">
+            <p class="nav-link m-0 pr-2">Вы вошли как: <span class="RedBoldText">{{ userName }}</span></p>
+            <form class="form-inline my-2 my-lg-0">
+                <a class="btn btn-outline-success my-2 my-sm-0" href="{{ path('logout')}}" >Выйти</a>
+            </form>
+        </div>
+    </nav>
+
     {% for message in app.flashes('success') %}
         <div id="my-alert" class="alert alert-success alert-dismissible fade show" role="alert">
             {{ message }}
@@ -16,5 +27,5 @@
         </div>
     {% endfor %}
     {{app.session.get('user')}}
-    <a href="{{ path('logout')}}" >Выйти</a>
+    </div>
     {% endblock %}

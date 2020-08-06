@@ -15,6 +15,6 @@
             </script>
         </div>
     {% endfor %}
-    {{ app.session.get("user") }}
-    <a href="/">Выйти</a>
+    {{app.session.get('user')}}
+    <a href="{{ path('logout')}}" >Выйти</a>
     {% endblock %}

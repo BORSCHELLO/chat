@@ -28,7 +28,8 @@
     {% endfor %}
         <div class="mainBlock">
             {% for message in messages %}
-            <div class="messages">
+            <div class="messages" style="{% if  message.user.id  == app.session.get('user') %} background-color: white;
+            {% else %}background-color: gainsboro;{% endif %}">
                 <p class="userName">{{ message.user.name }}</p>
                 <p class="message">{{ message.message }}</p>
                 <p class="date">{{ message.createdat }}</p>

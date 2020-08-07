@@ -29,14 +29,20 @@
         <div class="mainBlock">
             {% for message in messages %}
             <div class="messages">
-                <p class="userName"></p>
+                <p class="userName">{{ message.user.name }}</p>
                 <p class="message">{{ message.message }}</p>
                 <p class="date">{{ message.createdat }}</p>
             </div>
             {% endfor %}
+            <div class="fixed-bottom">
+                <div class="navbar-inner">
+                    <div class="container p-5 ">
             {{ form_start(formMessage) }}
             {{ form_widget(formMessage) }}
             {{ form_end(formMessage) }}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     {% endblock %}

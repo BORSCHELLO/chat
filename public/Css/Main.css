@@ -5,7 +5,7 @@
 }
 .mainBlock{
     margin-top: 15px;
-    height: 100vh;
+    height: 70%;
     background-color: #effbfb;
     width: auto;
     box-shadow: 0 0 7px rgba(0,0,0,0.5);
@@ -15,6 +15,24 @@
     margin: 5px;
 }
 .messages{
-    border: solid red 1px;
+    border: solid black 1px;
     padding: 8px;
+    margin: 5px;
+    background-color: gainsboro;
+}
+.formMessage{
+    margin: 5px;
+}
+.userName{
+    color: red;
+    font-size:1.3em;
+    font-weight: bold;
+}
+.message{
+    font-weight: bold;
+}
+.date{
+    color: green;
+    font-size:0.9em;
+    font-weight: bold;
 }

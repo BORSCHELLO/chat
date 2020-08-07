@@ -19,15 +19,15 @@ class Login extends AbstractController
         $session = new Session();
         $user = new User();
         $user->setName('');
-                $form = $this->createFormBuilder($user)
+                $formUser = $this->createFormBuilder($user)
             ->add('name', TextType::class,
                 array('attr' => array('class' => "form-control")))
             ->add('save', SubmitType::class,
                 array('label' => 'Отправить', 'attr' => array('class' => "btn btn-success mt-2")))
             ->getForm();
-        $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid() ) {
-                $requestUser = $form->getData();
+        $formUser->handleRequest($request);
+            if ($formUser->isSubmitted() && $formUser->isValid() ) {
+                $requestUser = $formUser->getData();
                 $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(['name' => $requestUser-> getName ()]);
                 if($user){
                     $this->addFlash('success','С возвращением'.' '.$requestUser->getName());
@@ -46,7 +46,7 @@ class Login extends AbstractController
                 }
         }
             return $this->render('login.html.twig', array(
-            'form' => $form->createView()
+            'formUser' => $formUser->createView()
         ));
     }
 }

@@ -3,9 +3,9 @@
     <div class="container ">
     <div class="justify-content-md-center">
         <h1>Введите Ваше имя:</h1>
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
+        {{ form_start(formUser) }}
+        {{ form_widget(formUser) }}
+        {{ form_end(formUser) }}
     </div>
     </div>
     {{app.session.get('user')}}

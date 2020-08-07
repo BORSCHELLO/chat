@@ -40,7 +40,6 @@ class Service extends AbstractController
             return $this->redirectToRoute('main');
         }
         $messageShow=$this->getDoctrine()->getRepository(Message::class)->findAll();
-
         return $this->render('main.html.twig',array('messages'=>$messageShow,'formMessage' => $formMessage->createView()));
     }
     /**

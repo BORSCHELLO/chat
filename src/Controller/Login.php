@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class LoginController extends AbstractController
+class Login extends AbstractController
 {
     /**
      *@Route("/", name="login")

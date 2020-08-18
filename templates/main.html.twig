@@ -28,20 +28,20 @@
     {% endfor %}
         <div class="mainBlock">
             {% for message in messages %}
-            <div class="messages" style="{% if  message.user.id  == app.session.get('user') %} background-color: white;
-            {% else %}background-color: gainsboro;{% endif %}">
+            <div class="messages" style="{% if  message.user.id  == app.session.get('user') %} background-color: white; float: right;
+            {% else %}background-color: gainsboro; float: left;{% endif %}">
                 <p class="userName">{{ message.user.name }}</p>
                 <p class="message">{{ message.message }}</p>
                 <p class="date">{{ message.createdat }}</p>
             </div>
             {% endfor %}
-            <div class="fixed-bottom">
-                <div class="navbar-inner">
-                    <div class="container p-5 ">
-            {{ form_start(formMessage) }}
-            {{ form_widget(formMessage) }}
-            {{ form_end(formMessage) }}
-                    </div>
+        </div>
+        <div class="fixed-bottom color">
+            <div class="navbar-inner">
+                <div class="container p-5 ">
+                    {{ form_start(formMessage) }}
+                    {{ form_widget(formMessage) }}
+                    {{ form_end(formMessage) }}
                 </div>
             </div>
         </div>

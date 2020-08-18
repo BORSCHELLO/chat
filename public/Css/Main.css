@@ -5,19 +5,22 @@
 }
 .mainBlock{
     margin-top: 15px;
-    height: 95vh;
     background-color: #effbfb;
     width: auto;
     box-shadow: 0 0 7px rgba(0,0,0,0.5);
     border: solid red 3px;
+    height: 100vh;
+    padding-bottom: 15vh;
 }
 .userName{
     margin: 5px;
 }
 .messages{
     border: solid black 1px;
-    padding: 8px;
+    padding: 9px;
     margin: 5px;
+    width: 70%;
+    border-radius: 10px;
 }
 .formMessage{
     margin: 5px;

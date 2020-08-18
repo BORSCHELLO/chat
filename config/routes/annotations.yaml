@@ -1,4 +1,4 @@
-controllers:
+controller:
     resource: ../../src/Controller/
     type: annotation
 

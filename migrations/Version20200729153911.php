@@ -19,17 +19,15 @@ final class Version20200729153911 extends AbstractMigration
 
     public function up(Schema $schema) : void
     {
-        // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE mesage ADD user_id INT NOT NULL');
-        $this->addSql('ALTER TABLE mesage ADD CONSTRAINT FK_738183C8A76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
-        $this->addSql('CREATE INDEX IDX_738183C8A76ED395 ON mesage (user_id)');
+        $this->addSql('ALTER TABLE message ADD user_id INT NOT NULL');
+        $this->addSql('ALTER TABLE message ADD CONSTRAINT FK_738183C8A76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
+        $this->addSql('CREATE INDEX IDX_738183C8A76ED395 ON message (user_id)');
     }
 
     public function down(Schema $schema) : void
     {
-        // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE mesage DROP FOREIGN KEY FK_738183C8A76ED395');
-        $this->addSql('DROP INDEX IDX_738183C8A76ED395 ON mesage');
-        $this->addSql('ALTER TABLE mesage DROP user_id');
+        $this->addSql('ALTER TABLE message DROP FOREIGN KEY FK_738183C8A76ED395');
+        $this->addSql('DROP INDEX IDX_738183C8A76ED395 ON message');
+        $this->addSql('ALTER TABLE message DROP user_id');
     }
 }

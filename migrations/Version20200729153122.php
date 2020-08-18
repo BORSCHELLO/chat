@@ -19,13 +19,18 @@ final class Version20200729153122 extends AbstractMigration
 
     public function up(Schema $schema) : void
     {
-        // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE mesage (id INT AUTO_INCREMENT NOT NULL, mesage VARCHAR(1000) NOT NULL, created_at DATETIME NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('
+            CREATE TABLE message (
+                id INT AUTO_INCREMENT NOT NULL, 
+                message VARCHAR(1000) NOT NULL, 
+                created_at DATETIME NOT NULL, 
+                PRIMARY KEY(id)
+            ) ENGINE = InnoDB'
+        );
     }
 
     public function down(Schema $schema) : void
     {
-        // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP TABLE mesage');
+        $this->addSql('DROP TABLE message');
     }
 }

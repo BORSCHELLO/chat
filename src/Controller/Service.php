@@ -3,10 +3,9 @@
 namespace App\Controller;
 use App\Entity\Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Entity\User;
+use App\User\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -52,4 +51,3 @@ class Service extends AbstractController
         return $this->redirectToRoute('login');
     }
 }
-/*

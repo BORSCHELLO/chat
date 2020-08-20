@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Entity;
+declare(strict_types=1);
 
-use App\Repository\UserRepository;
+namespace App\User\Entity;
+
+use App\User\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-
-
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -20,16 +20,16 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, nullable=false)
      */
     private $name;
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -40,5 +40,4 @@ class User
 
         return $this;
     }
-
 }

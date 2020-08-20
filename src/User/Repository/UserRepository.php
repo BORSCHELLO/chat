@@ -1,24 +1,32 @@
 <?php
 
-namespace App\Repository;
+declare(strict_types=1);
 
-use App\Entity\User;
+namespace App\User\Repository;
+
+use App\User\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @method User|null find($id, $lockMode = null, $lockVersion = null)
- * @method User|null findOneBy(array $criteria, array $orderBy = null)
- * @method User[]    findAll()
- * @method User[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
-class UserRepository extends ServiceEntityRepository
+class UserRepository extends ServiceEntityRepository implements UserRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
     }
 
+    public function findByName(string $name): ?User
+    {
+        return $this->findOneBy(['name' => $name]);
+    }
+
+    public function create(User $user): User
+    {
+        $this->_em->persist($user);
+        $this->_em->flush();
+
+        return $user;
+    }
 
     /*
     public function findByExampleField($value)

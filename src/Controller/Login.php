@@ -36,7 +36,7 @@ class Login extends AbstractController
                 $this->addFlash('success', sprintf('С возвращением %s', $user->getName()));
             } else {
                 $user = $registerUserService->register($formUser);
-                $this->addFlash('success', sprintf('ы удачно зарегистрированы %s', $user->getName()));
+                $this->addFlash('success', sprintf('Вы удачно зарегистрированы %s', $user->getName()));
             }
 
             $this->setUser($user);

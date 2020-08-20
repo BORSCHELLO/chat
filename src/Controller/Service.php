@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\Message;
+use App\Room\Entity\Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\User\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;

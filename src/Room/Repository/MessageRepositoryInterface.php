@@ -9,7 +9,7 @@ use App\User\Entity\User;
 
 interface MessageRepositoryInterface
 {
-    public function create(Message $message): ?Message;
+    public function create(Message $message): Message;
 
     public function findByAll(): ?array;
 }

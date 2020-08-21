@@ -19,7 +19,7 @@ class MessageRepository extends ServiceEntityRepository implements MessageReposi
         parent::__construct($registry, Message::class);
     }
 
-    public function create(Message $message): ?Message
+    public function create(Message $message): Message
     {
         $this->_em->persist($message);
         $this->_em->flush();

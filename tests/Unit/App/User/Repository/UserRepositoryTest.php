@@ -24,7 +24,6 @@ class UserRepositoryTest extends DoctrineTestCase
         $this->assertNull($this->userRepository->findById(1));
 
         $user = new User();
-        $user->setId(1);
         $user->setName('test');
 
         $this->userRepository->create($user);

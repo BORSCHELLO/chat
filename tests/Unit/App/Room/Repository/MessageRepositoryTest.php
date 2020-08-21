@@ -9,30 +9,32 @@ use App\Tests\Unit\DoctrineTestCase;
 
 use App\Room\Repository\MessageRepositoryInterface;
 use App\User\Entity\User;
+use App\User\Repository\UserRepositoryInterface;
 
 class MessageRepositoryTest extends DoctrineTestCase
 {
     protected MessageRepositoryInterface $messageRepository;
 
+    protected UserRepositoryInterface $userRepository;
+
     public function setUp(): void
     {
         parent::setUp();
 
-        /** @var MessageRepositoryInterface $messageRepository */
         $this->messageRepository = $this->em->getRepository(Message::class);
+        $this->userRepository = $this->em->getRepository(User::class);
     }
 
     public function testFindAll()
     {
-        $message = new Message();
         $user=new User();
+        $user->setName('test');
+        $this->userRepository->create($user);
 
+        $message = new Message();
         $message->setMessage('test');
         $message->setCreatedAt('2020-08-21 17:18:09');
-        $user->setName('test');
-        $message->setUser($user->getId());
-
-
+        $message->setUser($user);
 
         $this->messageRepository->create($message);
 

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body%}
-    <div class="container justify-content: space-between;"style="height: 100%">
+    <div class="container h-100 justify-content: space-between;">
        <nav class="navbar navbar-expand-lg navbar-light bg-light border">
         <a class=" col-md-8 RedBoldText" href="#">BORSChat</a>
         <div class="collapse navbar-collapse col-md-4" id="navbarTogglerDemo02">
@@ -25,7 +25,7 @@
                 });
             </script>
         </div>
-        </div>
+
     {% endfor %}
         <div class="mainBlock">
             <div class="chat-messages">
@@ -46,4 +46,5 @@
                     {{ form_end(formMessage) }}
         </div>
         </div>
+    </div>
     {% endblock %}

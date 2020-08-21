@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class Logout extends AbstractController
 {
     /**
-     *@Route("#", name="logout")
+     *@Route("/logout", name="logout")
      */
     public function logout()
     {

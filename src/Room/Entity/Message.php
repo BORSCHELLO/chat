@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\Room\Entity;
 
-use App\Repository\MessageRepository;
+use App\Room\Repository\MessageRepository;
 use App\User\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 

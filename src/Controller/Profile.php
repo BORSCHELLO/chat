@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Controller;
 
 use App\User\Entity\User;
@@ -7,14 +8,14 @@ use App\User\Form\RegisterForm;
 use App\User\Repository\UserRepositoryInterface;
 use App\User\Service\RegisterUserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
-class Login extends AbstractController
+class Profile extends AbstractController
 {
     /**
-     *@Route("/", name="login")
+     *@Route("/profile/login", name="login")
      */
     public function login(
         Request $request,
@@ -36,7 +37,7 @@ class Login extends AbstractController
                 $this->addFlash('success', sprintf('С возвращением %s', $user->getName()));
             } else {
                 $user = $registerUserService->register($formUser);
-                $this->addFlash('success', sprintf('ы удачно зарегистрированы %s', $user->getName()));
+                $this->addFlash('success', sprintf('Вы удачно зарегистрированы %s', $user->getName()));
             }
 
             $this->setUser($user);
@@ -55,5 +56,14 @@ class Login extends AbstractController
         $session->set('user', $user->getId());
         $session->set('userName', $user->getName());
     }
-}
 
+    /**
+     *@Route("/profile/logout", name="logout")
+     */
+    public function logout()
+    {
+        $session=new Session();
+        $session->remove('user');
+        return $this->redirectToRoute('login');
+    }
+}

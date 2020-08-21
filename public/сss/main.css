@@ -1,3 +1,8 @@
+.body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
 .RedBoldText{
     color: red;
     font-size:1.3em;
@@ -6,24 +11,39 @@
 .mainBlock{
     margin-top: 15px;
     background-color: #effbfb;
-    width: auto;
+    width: 100%;
     box-shadow: 0 0 7px rgba(0,0,0,0.5);
-    border: solid red 3px;
-    height: 100vh;
+    border: solid silver 3px;
+    height: 90vh;
     padding-bottom: 15vh;
-}
-.userName{
-    margin: 5px;
+    position: relative;
+    overflow: hidden;
 }
 .messages{
     border: solid black 1px;
-    padding: 9px;
+    padding: 1rem;
     margin: 5px;
     width: 70%;
     border-radius: 10px;
+
 }
-.formMessage{
-    margin: 5px;
+.chat-messages{
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 15%;
+    overflow-y: auto;
+
+}
+.chat-form{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 15%;
+    padding:1rem;
+    background-color: silver;
 }
 .userName{
     color: red;

@@ -8,11 +8,11 @@ use App\Tests\Unit\DoctrineTestCase;
 use App\User\Entity\User;
 use App\User\Repository\UserRepositoryInterface;
 
-class UserTest extends DoctrineTestCase
+class UserRepositoryTest extends DoctrineTestCase
 {
     protected UserRepositoryInterface $userRepository;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -20,6 +20,16 @@ class UserTest extends DoctrineTestCase
         $this->userRepository = $this->em->getRepository(User::class);
     }
 
+    public function testFindById(){
+        $this->assertNull($this->userRepository->findById(1));
+
+        $user = new User();
+        $user->setName('test');
+
+        $this->userRepository->create($user);
+
+        $this->assertEquals(1, $user->getId());
+    }
 
     public function testCreateFind()
     {

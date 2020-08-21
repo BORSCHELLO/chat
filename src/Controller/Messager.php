@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Room\Entity\Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\User\Entity\User;
@@ -10,7 +11,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-class Service extends AbstractController
+class Messager extends AbstractController
 {
     /**
      * @Route("/main", name="main")
@@ -40,14 +41,5 @@ class Service extends AbstractController
         }
         $messageShow=$this->getDoctrine()->getRepository(Message::class)->findAll();
         return $this->render('main.html.twig',array('messages'=>$messageShow,'formMessage' => $formMessage->createView()));
-    }
-    /**
-     *@Route("#", name="logout")
-     */
-    public function logout()
-    {
-        $session=new Session();
-        $session->remove('user');
-        return $this->redirectToRoute('login');
     }
 }

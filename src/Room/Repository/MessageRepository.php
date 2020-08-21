@@ -12,7 +12,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Message[]    findAll()
  * @method Message[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class MessageRepository extends ServiceEntityRepository
+class MessageRepository extends ServiceEntityRepository implements MessageRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {

@@ -20,6 +20,11 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
         return $this->findOneBy(['name' => $name]);
     }
 
+    public function findById(int $id): ?User
+    {
+        return $this->findOneBy(['id'=>$id]);
+    }
+
     public function create(User $user): User
     {
         $this->_em->persist($user);

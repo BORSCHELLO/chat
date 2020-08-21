@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-class Profile extends AbstractController
+class ProfileController extends AbstractController
 {
     /**
      *@Route("/profile/login", name="login")

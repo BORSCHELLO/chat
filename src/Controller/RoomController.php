@@ -14,17 +14,18 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Room\Repository\MessageRepository;
 use App\Room\Repository\MessageRepositoryInterface;
 
-class Messager extends AbstractController
+class RoomController extends AbstractController
 {
     /**
      * @Route("/main", name="main")
      * @param $request
      */
-    public function messager(Request $request,
-    UserRepositoryInterface $userRepository,
-    MessageRepositoryInterface $messageRepository)
-    {
-        $session=new Session();
+    public function messager(
+        Request $request,
+        UserRepositoryInterface $userRepository,
+        MessageRepositoryInterface $messageRepository
+    ) {
+        $session = new Session();
         $message = new Message();
         $message->setMessage('');
         $formMessage = $this->createFormBuilder($message)
@@ -35,16 +36,17 @@ class Messager extends AbstractController
             ->getForm();
         $formMessage->handleRequest($request);
 
-        if ($formMessage->isSubmitted() && $formMessage->isValid() ) {
+        if ($formMessage->isSubmitted() && $formMessage->isValid()) {
             $userName = $userRepository->findById($session->get('user'));
-             $message->setUser($userName);
-             $message->setCreatedAt(date('Y-m-d H:i:s',time()));
+            $message->setUser($userName);
+            $message->setCreatedAt(date('Y-m-d H:i:s', time()));
 
-             $messageRepository->create($formMessage->getData());
+            $messageRepository->create($formMessage->getData());
 
             return $this->redirectToRoute('main');
         }
-            $messageShow=$messageRepository->findByAll();
-        return $this->render('main.html.twig',array('messages'=>$messageShow,'formMessage' => $formMessage->createView()));
+        $messageShow = $messageRepository->findByAll();
+        return $this->render('main.html.twig',
+            array('messages' => $messageShow, 'formMessage' => $formMessage->createView()));
     }
 }

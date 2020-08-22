@@ -4,9 +4,9 @@
        <nav class="navbar navbar-expand-lg navbar-light bg-light border">
         <a class=" col-md-8 RedBoldText" href="#">BORSChat</a>
         <div class="collapse navbar-collapse col-md-4" id="navbarTogglerDemo02">
-            <p class="nav-link m-0 pr-2">Вы вошли как: <span class="RedBoldText">{{app.session.get('userName')}}</span></p>
+            <p class="nav-link m-0 pr-2">Вы вошли как: <span class="RedBoldText">{{app.user.name}}</span></p>
             <form class="form-inline my-2 my-lg-0">
-                <a class="btn btn-outline-success my-2 my-sm-0" href="{{ path('logout')}}" >Выйти</a>
+                <a class="btn btn-outline-success my-2 my-sm-0" href="{{ path('profile_logout')}}" >Выйти</a>
             </form>
         </div>
     </nav>

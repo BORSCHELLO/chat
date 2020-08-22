@@ -1,10 +1,8 @@
 <?php
 
-
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -29,6 +27,6 @@ class ProfileController extends AbstractController
      */
     public function logout()
     {
-        return $this->redirectToRoute('login');
+        return $this->redirectToRoute('profile_login');
     }
 }

@@ -15,6 +15,7 @@ security:
 
             logout:
                 path: profile_logout
+                target: profile_login
 
             guard:
                 authenticators:

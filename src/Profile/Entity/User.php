@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\User\Entity;
+namespace App\Profile\Entity;
 
-use App\User\Repository\UserRepository;
+use App\Profile\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 

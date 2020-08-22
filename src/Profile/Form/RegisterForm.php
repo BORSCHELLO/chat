@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\User\Form;
+namespace App\Profile\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;

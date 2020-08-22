@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\User\Security;
+namespace App\Profile\Security;
 
 use App\Controller\ProfileController;
 use App\Controller\RoomController;
-use App\User\Entity\User;
-use App\User\Service\RegisterUserServiceInterface;
+use App\Profile\Entity\User;
+use App\Profile\Service\RegisterUserServiceInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;

@@ -1,12 +1,16 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="container ">
-    <div class="justify-content-md-center">
-        <h1>Введите Ваше имя:</h1>
-        {{ form_start(formUser) }}
-        {{ form_widget(formUser) }}
-        {{ form_end(formUser) }}
+        <div class="justify-content-md-center">
+            <form method="post">
+                <label for="inputName">Введите ваше имя:</label>
+                <input type="text" value="" name="name" id="inputName" class="form-control" required autofocus>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+
+                <button class="btn btn-lg btn-primary" type="submit">
+                    Войти
+                </button>
+            </form>
+        </div>
     </div>
-    </div>
-    {{app.session.get('user')}}
 {% endblock %}

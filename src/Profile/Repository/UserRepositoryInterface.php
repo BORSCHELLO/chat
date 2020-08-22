@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\User\Repository;
+namespace App\Profile\Repository;
 
-use App\User\Entity\User;
+use App\Profile\Entity\User;
 
 interface UserRepositoryInterface
 {

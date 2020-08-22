@@ -3,7 +3,7 @@ security:
     providers:
         users:
             entity:
-                class: 'App\User\Entity\User'
+                class: 'App\Profile\Entity\User'
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -18,8 +18,8 @@ security:
 
             guard:
                 authenticators:
-                    - App\User\Security\LoginFormAuthenticator
-                entry_point: App\User\Security\LoginFormAuthenticator
+                    - App\Profile\Security\LoginFormAuthenticator
+                entry_point: App\Profile\Security\LoginFormAuthenticator
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

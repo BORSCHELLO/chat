@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\User\Service;
+namespace App\Profile\Service;
 
-use App\User\Entity\User;
+use App\Profile\Entity\User;
 
 interface RegisterUserServiceInterface
 {

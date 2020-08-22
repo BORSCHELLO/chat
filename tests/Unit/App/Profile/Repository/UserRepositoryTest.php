@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Tests\Unit\App\User\Repository;
 
 use App\Tests\Unit\DoctrineTestCase;
-use App\User\Entity\User;
-use App\User\Repository\UserRepositoryInterface;
+use App\Profile\Entity\User;
+use App\Profile\Repository\UserRepositoryInterface;
 
 class UserRepositoryTest extends DoctrineTestCase
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\User\Repository;
+namespace App\Profile\Repository;
 
-use App\User\Entity\User;
+use App\Profile\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;

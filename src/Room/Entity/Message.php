@@ -3,7 +3,7 @@
 namespace App\Room\Entity;
 
 use App\Room\Repository\MessageRepository;
-use App\User\Entity\User;
+use App\Profile\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

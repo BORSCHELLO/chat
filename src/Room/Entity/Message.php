@@ -5,6 +5,7 @@ namespace App\Room\Entity;
 use App\Room\Repository\MessageRepository;
 use App\Profile\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
+use DateTimeImmutable;
 
 /**
  * @ORM\Entity(repositoryClass=MessageRepository::class)
@@ -25,9 +26,9 @@ class Message
     private $message;
 
     /**
-     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(name="created_at", type="datetime_immutable", options={"default": "CURRENT_TIMESTAMP"})
      */
-    private $created_at;
+    private $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
@@ -54,16 +55,22 @@ class Message
 
     public function getCreatedAt()
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
+
+    public function setCreatedAt(DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
     /**
      * @ORM\PrePersist
      */
-    public function setCreatedAt(): self
+    public function prePersist()
     {
-        $this->created_at = new \DateTime();
-
-        return $this;
+        $this->setCreatedAt(new DateTimeImmutable());
     }
 
     public function getUser()

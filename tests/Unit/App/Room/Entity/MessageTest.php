@@ -19,7 +19,7 @@ class MessageTest extends TestCase
         $helper = new TestPrivateHelper($message);
         $helper->set('id', 1);
         $helper->set('message', 'test message');
-        $helper->set('created_at','2020-08-07 12:11:53');
+        $helper->set('createdAt','2020-08-07 12:11:53');
         $helper->set('user',$user);
 
         $this->assertEquals(1, $message->getId());
@@ -32,7 +32,7 @@ class MessageTest extends TestCase
     {
         $message= new Message();
         $user= new User();
-        $date = new \DateTime();
+        $date = new \DateTimeImmutable();
         $z= new Message();
 
         $message->setMessage('test');

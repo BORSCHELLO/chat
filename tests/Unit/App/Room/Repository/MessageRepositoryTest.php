@@ -28,7 +28,7 @@ class MessageRepositoryTest extends DoctrineTestCase
     public function testFindAll()
     {
         $user=new User();
-        $date = new \DateTime();
+        $date = new \DateTimeImmutable();
         $z= new Message();
         $user->setName('test');
 

@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Room\Repository\MessageRepositoryInterface;
+use DateTimeImmutable;
 
 class RoomController extends AbstractController
 {
@@ -32,7 +33,6 @@ class RoomController extends AbstractController
 
         if ($formMessage->isSubmitted() && $formMessage->isValid()) {
             $message->setUser($this->getUser());
-            $message->setCreatedAt(date('Y-m-d H:i:s', time()));
 
             $messageRepository->create($formMessage->getData());
 

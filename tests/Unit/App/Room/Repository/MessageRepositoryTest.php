@@ -29,7 +29,6 @@ class MessageRepositoryTest extends DoctrineTestCase
     {
         $user=new User();
         $date = new \DateTimeImmutable();
-        $z= new Message();
         $user->setName('test');
 
         $this->userRepository->create($user);
@@ -37,12 +36,12 @@ class MessageRepositoryTest extends DoctrineTestCase
         $message = new Message();
         $message->setMessage('test');
         $message->setUser($user);
-        $z->setCreatedAt($date);
+        $message->setCreatedAt($date);
 
         $this->messageRepository->create($message);
 
         $this->assertEquals('test', $message->getMessage());
-        $this->assertEquals($date->format('Y-m-d H:i:s'), $z->getCreatedAt()->format('Y-m-d H:i:s'));
+        $this->assertEquals($date->format('Y-m-d H:i:s'), $message->getCreatedAt()->format('Y-m-d H:i:s'));
     }
 
 }

@@ -35,13 +35,13 @@ class MessageTest extends TestCase
         $message= new Message();
         $user= new User();
         $date = new \DateTimeImmutable();
-        $z= new Message();
+
 
         $message->setMessage('test');
         $this->assertEquals('test', $message->getMessage());
 
-        $z->setCreatedAt($date);
-        $this->assertEquals($date->format('Y-m-d H:i:s'), $z->getCreatedAt()->format('Y-m-d H:i:s'));
+        $message->setCreatedAt($date);
+        $this->assertEquals($date->format('Y-m-d H:i:s'), $message->getCreatedAt()->format('Y-m-d H:i:s'));
 
         $message->setUser($user);
         $this->assertEquals($user, $message->getUser());

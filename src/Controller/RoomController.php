@@ -32,7 +32,7 @@ class RoomController extends AbstractController
 
         if ($formMessage->isSubmitted() && $formMessage->isValid()) {
             $message->setUser($this->getUser());
-            $message->setCreatedAt(date('Y-m-d H:i:s', time()));
+            $message->setCreatedAt();
 
             $messageRepository->create($formMessage->getData());
 

@@ -29,11 +29,11 @@
         <div class="mainBlock">
             <div class="chat-messages" >
             {% for message in messages %}
-            <div class="messages"style="{% if  message.user.id  == app.session.get('user') %} background-color: white; float: right;
-            {% else %}background-color: gainsboro; float: left;{% endif %}">
+            <div class="messages" style="{% if  message.user.id  == app.session.get('user') %} background-color: white; float: right;
+            {% else %} background-color: gainsboro; float: left; {% endif %}">
                 <p class="userName">{{ message.user.name }}</p>
                 <p class="message">{{ message.message }}</p>
-                <p class="date">{{ message.createdat }}</p>
+                <p class="date">{{ message.createdat |date("H:i:s m/d/Y") }}</p>
             </div>
             {% endfor %}
             </div>

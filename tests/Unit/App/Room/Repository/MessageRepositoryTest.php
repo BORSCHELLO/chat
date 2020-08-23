@@ -8,8 +8,8 @@ use App\Room\Entity\Message;
 use App\Tests\Unit\DoctrineTestCase;
 
 use App\Room\Repository\MessageRepositoryInterface;
-use App\User\Entity\User;
-use App\User\Repository\UserRepositoryInterface;
+use App\Profile\Entity\User;
+use App\Profile\Repository\UserRepositoryInterface;
 
 class MessageRepositoryTest extends DoctrineTestCase
 {
@@ -28,18 +28,21 @@ class MessageRepositoryTest extends DoctrineTestCase
     public function testFindAll()
     {
         $user=new User();
+        $date = new \DateTime();
+        $z= new Message();
         $user->setName('test');
+
         $this->userRepository->create($user);
 
         $message = new Message();
         $message->setMessage('test');
-        $message->setCreatedAt('2020-08-21 17:18:09');
         $message->setUser($user);
+        $z->setCreatedAt($date);
 
         $this->messageRepository->create($message);
 
         $this->assertEquals('test', $message->getMessage());
-        $this->assertEquals('2020-08-21 17:18:09', $message->getCreatedAt());
+        $this->assertEquals($date->format('Y-m-d H:i:s'), $z->getCreatedAt()->format('Y-m-d H:i:s'));
     }
 
 }

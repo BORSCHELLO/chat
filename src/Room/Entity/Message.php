@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=MessageRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Message
 {
@@ -24,7 +25,7 @@ class Message
     private $message;
 
     /**
-     * @ORM\Column(type="string", options={"default": "CURRENT_TIMESTAMP"})
+     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
     private $created_at;
 
@@ -55,10 +56,12 @@ class Message
     {
         return $this->created_at;
     }
-
-    public function setCreatedAt($created_at): self
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAt(): self
     {
-        $this->created_at = $created_at;
+        $this->created_at = new \DateTime();
 
         return $this;
     }

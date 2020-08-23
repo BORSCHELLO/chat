@@ -6,7 +6,7 @@ namespace Tests\Unit\App\Room\Entity;
 
 use App\Tests\Unit\TestPrivateHelper;
 use App\Room\Entity\Message;
-use App\User\Entity\User;
+use App\Profile\Entity\User;
 use PHPUnit\Framework\TestCase;
 
 class MessageTest extends TestCase
@@ -32,12 +32,14 @@ class MessageTest extends TestCase
     {
         $message= new Message();
         $user= new User();
+        $date = new \DateTime();
+        $z= new Message();
 
         $message->setMessage('test');
         $this->assertEquals('test', $message->getMessage());
 
-        $message->setCreatedAt('2020-08-07 12:11:53');
-        $this->assertEquals('2020-08-07 12:11:53', $message->getCreatedAt());
+        $z->setCreatedAt($date);
+        $this->assertEquals($date->format('Y-m-d H:i:s'), $z->getCreatedAt()->format('Y-m-d H:i:s'));
 
         $message->setUser($user);
         $this->assertEquals($user, $message->getUser());

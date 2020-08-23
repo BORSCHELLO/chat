@@ -15,16 +15,18 @@ class MessageTest extends TestCase
     {
         $message = new Message();
         $user= new User();
+        $date = new \DateTimeImmutable();
 
         $helper = new TestPrivateHelper($message);
         $helper->set('id', 1);
         $helper->set('message', 'test message');
-        $helper->set('createdAt','2020-08-07 12:11:53');
+        $helper->set('createdAt',$date);
+
         $helper->set('user',$user);
 
         $this->assertEquals(1, $message->getId());
         $this->assertEquals('test message', $message->getMessage());
-        $this->assertEquals('2020-08-07 12:11:53', $message->getCreatedAt());
+        $this->assertEquals($date, $message->getCreatedAt());
         $this->assertEquals($user, $message->getUser());
     }
 

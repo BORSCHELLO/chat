@@ -8,8 +8,11 @@ use App\Controller\ProfileController;
 use App\Controller\RoomController;
 use App\Profile\Entity\User;
 use App\Profile\Service\RegisterUserServiceInterface;
+use App\Profile\Service\UserSessionServiceInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
@@ -23,6 +26,7 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
+
     use TargetPathTrait;
 
     private RegisterUserServiceInterface $registerUserService;
@@ -31,14 +35,22 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     private CsrfTokenManagerInterface $csrfTokenManager;
 
+    private UserSessionServiceInterface $userSessionService;
+
+    private SessionInterface $session;
+
     public function __construct(
         RegisterUserServiceInterface $registerUserService,
+        UserSessionServiceInterface $userSessionService,
         UrlGeneratorInterface $urlGenerator,
-        CsrfTokenManagerInterface $csrfTokenManager
+        CsrfTokenManagerInterface $csrfTokenManager,
+        SessionInterface $session
     ) {
+        $this->userSessionService = $userSessionService;
         $this->registerUserService = $registerUserService;
         $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;
+        $this->session = $session;
     }
 
     /**
@@ -90,6 +102,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
             $user = $this->registerUserService->register($user);
         }
+        $lastVisit=$this->userSessionService->getLastVisit($user);
+
+        $this->session->set('lastVisit', $lastVisit);
+        $this->userSessionService->updateLastVisit($user);
 
         return $user;
     }

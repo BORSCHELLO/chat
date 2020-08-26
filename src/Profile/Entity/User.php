@@ -7,6 +7,7 @@ namespace App\Profile\Entity;
 use App\Profile\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use DateTimeImmutable;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -24,6 +25,10 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=20, nullable=false, unique=true)
      */
     private $name;
+    /**
+     * @ORM\Column(name="last_visit",type="datetime_immutable")
+     */
+    private $lastVisit;
 
     public function getId(): int
     {
@@ -82,5 +87,20 @@ class User implements UserInterface
     public function eraseCredentials()
     {
 
+    }
+    /**
+     * @inheritDoc
+     */
+    public function getLastVisit(): ?DateTimeImmutable
+    {
+        return $this->lastVisit;
+    }
+    /**
+     * @inheritDoc
+     */
+    public function setLastVisit(DateTimeImmutable $lastVisit)
+    {
+     $this->lastVisit=$lastVisit;
+     return $this;
     }
 }

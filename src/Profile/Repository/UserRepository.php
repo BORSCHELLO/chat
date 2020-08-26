@@ -34,6 +34,13 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
         return $user;
     }
 
+    public function update(User $user): User
+    {
+        $this->_em->flush();
+
+        return $user;
+    }
+
     public function loadUserByUsername(string $username)
     {
         return $this->findByName($username);

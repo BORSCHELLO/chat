@@ -26,7 +26,7 @@ class RoomController extends AbstractController
             ->add('message', TextareaType::class,
                 array('attr' => array('class' => "form-control")))
             ->add('save', SubmitType::class,
-                array('label' => 'Отправить', 'attr' => array('class' => "btn btn-success mt-2")))
+                array('label' => 'Отправить', 'attr' => array('class' => "btn btn btn-secondary mt-2")))
             ->getForm();
         $formMessage->handleRequest($request);
 

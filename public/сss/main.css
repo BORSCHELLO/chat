@@ -3,63 +3,135 @@
     padding: 0;
     height: 100%;
 }
+
 .RedBoldText{
     color: red;
     font-size:1.3em;
     font-weight: bold;
 }
+
 .mainBlock{
-    margin-top: 15px;
-    background-color: #effbfb;
     width: 100%;
-    box-shadow: 0 0 7px rgba(0,0,0,0.5);
-    border: solid silver 3px;
-    height: 90vh;
-    padding-bottom: 15vh;
     position: relative;
     overflow: hidden;
+    height: 1000px;
 }
+
 .messages{
     border: solid black 1px;
     padding: 1rem;
     margin: 5px;
     width: 70%;
-    border-radius: 10px;
-
+    border-radius: 4px;
 }
+
 .chat-messages{
     position: absolute;
     top:0;
     left: 0;
     right: 0;
-    bottom: 15%;
+    bottom: 21%;
     overflow-y: auto;
 
 }
 .chat-form{
     position: absolute;
-    bottom: 0;
+    bottom: 6%;
     right: 0;
     left: 0;
     height: 15%;
-    padding:1rem;
-    background-color: silver;
+    padding: 5px;
+    background-color: #dae7f5;
 }
+
 .userName{
     color: red;
     font-size:1.3em;
     font-weight: bold;
 }
+
 .message{
     font-weight: bold;
 }
+
 .date{
-    color: green;
+    color: #2c3e50;
     font-size:0.9em;
     font-weight: bold;
 }
-.LastVisitDate{
-    color: green;
-    font-size:0.9em;
+
+.LoginForm{
+    border: solid silver 2px;
+    box-shadow: 0 0 7px rgba(0,0,0,0.5);
+    padding: 15px;
+    margin: 20px;
+    background-color: #effbfb;
+}
+
+.RoomBox{
+    background-color: #2c3e50;
+    padding: 3px;
+    margin: 0;
+    width: 35%;
+    height: 1000px;
+}
+
+.ContentBox{
+    background-color: #FFFFFF;
+    margin: 0;
+    width: 65%;
+    height: 1000px;
+}
+
+.HomeMain{
+    width: 100%;
+    border: solid silver 1px;
+}
+
+.HomeLink{
+    background-color: #385169;
+    height: 60px;
+    text-align: center;
+}
+
+.TextHeaderColumn{
+    padding-top: 13px;
     font-weight: bold;
+    color: #FFFFFF;
+    font-size: 1.4em;
+    cursor: default;
+}
+
+.RoomLink{
+    background-color: #2c3e50;
+    height: 60px;
+    text-align: center;
+    display: block;
+    padding-top: 13px;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-size: 1.4em;
+    text-decoration: none;
+}
+
+.RoomLink:hover{
+    background-color: #375470;
+    height: 60px;
+    text-align: center;
+    display: block;
+    padding-top: 13px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-right: solid red 5px;
+}
+
+.Profile{
+    padding-left: 8px;
+    padding-bottom: 3px;
+    border-bottom: solid red 1px;
+}
+
+.HeaderColor{
+   background-color:  #f7fafc;
 }

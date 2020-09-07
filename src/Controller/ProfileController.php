@@ -27,6 +27,6 @@ class ProfileController extends AbstractController
      */
     public function logout()
     {
-        return $this->redirectToRoute('profile_login');
+        return $this->redirectToRoute('home');
     }
 }

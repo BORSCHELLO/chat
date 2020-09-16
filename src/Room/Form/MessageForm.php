@@ -17,7 +17,8 @@ class MessageForm extends AbstractType
             ->add('message',
                 TextareaType::class,
                 [
-                    'attr' => ['class' => "form-control"]
+                    'label'  => false,
+                    'attr' => ['class' => "form-control",'rows'=>"3",'resize'=> false]
                 ]
             )->add(
                 'save',

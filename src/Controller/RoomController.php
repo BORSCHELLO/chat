@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Room\Repository\MessageRepositoryInterface;
+use App\Room\Form\MessageForm;
 
 class RoomController extends AbstractController
 {
@@ -22,12 +23,7 @@ class RoomController extends AbstractController
     {
         $message = new Message();
         $message->setMessage('');
-        $formMessage = $this->createFormBuilder($message)
-            ->add('message', TextareaType::class,
-                array('attr' => array('class' => "form-control")))
-            ->add('save', SubmitType::class,
-                array('label' => 'Отправить', 'attr' => array('class' => "btn btn btn-secondary mt-2")))
-            ->getForm();
+        $formMessage =$this->createForm(MessageForm::class, $message);
         $formMessage->handleRequest($request);
 
         if ($formMessage->isSubmitted() && $formMessage->isValid()) {

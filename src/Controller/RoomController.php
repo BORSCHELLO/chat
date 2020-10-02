@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
+use App\Response\Room\MessagesJsonResponse;
 use App\Room\Entity\Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Room\Repository\MessageRepositoryInterface;
@@ -23,18 +23,49 @@ class RoomController extends AbstractController
     {
         $message = new Message();
         $message->setMessage('');
-        $formMessage =$this->createForm(MessageForm::class, $message);
+        $formMessage =$this->createForm(MessageForm::class, $message,['attr' => ['id' => 'message_form']]);
         $formMessage->handleRequest($request);
 
-        if ($formMessage->isSubmitted() && $formMessage->isValid()) {
+        if ($request->request->get('nowSend')) {
+            $limitNowSend=$request->request->get('nowSend');
             $message->setUser($this->getUser());
-
+            $message->setMessage($request->request->get('message'));
             $messageRepository->create($formMessage->getData());
 
-            return $this->redirectToRoute(self::ROUTE_MAIN);
+            return new MessagesJsonResponse($messageRepository->getMessages(0, $limitNowSend));
         }
-        $messageShow = $messageRepository->findByAll();
-        return $this->render('main.html.twig',
-            array('messages' => $messageShow, 'formMessage' => $formMessage->createView()));
+
+        return $this->render('main.html.twig', ['formMessage' => $formMessage->createView()]);
+    }
+
+    /**
+     * @Route("/show", name="show")
+     */
+    public function show(MessageRepositoryInterface $messageRepository)
+    {
+        $messagesLimit = $_ENV['SHOW_MESSAGE_LIMIT'];
+
+        return new MessagesJsonResponse($messageRepository->getMessages(0, $messagesLimit)->sort());
+    }
+
+    /**
+     * @Route("/showTimer", name="showTimer")
+     */
+    public function showTimerMessage(Request $request,MessageRepositoryInterface $messageRepository)
+    {
+        return new MessagesJsonResponse($messageRepository->getMessagesByLastId($request->request->get('id')));
+    }
+
+    /**
+     * @Route("/showMore", name="showMore")
+     * @param $request
+     */
+    public function showMore(Request $request,MessageRepositoryInterface $messageRepository)
+    {
+        $messagesLimit = $_ENV['SHOW_MESSAGE_LIMIT'];
+        $offset=$messagesLimit+$request->request->get('counterLimit');
+        $limit=$request->request->get('limit');
+
+        return new MessagesJsonResponse($messageRepository->getMessages($offset,$limit));
     }
 }

@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\Room\Repository;
 
+use App\Room\Collection\MessageCollection;
 use App\Room\Entity\Message;
-use App\User\Entity\User;
+
 
 interface MessageRepositoryInterface
 {
     public function create(Message $message): Message;
 
-    public function findByAll(): ?array;
+    public function getMessages($offset, $limit): MessageCollection;
+
+    public function getMessagesByLastId($lastId): MessageCollection;
 }

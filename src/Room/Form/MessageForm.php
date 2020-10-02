@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Room\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -18,14 +18,14 @@ class MessageForm extends AbstractType
                 TextareaType::class,
                 [
                     'label'  => false,
-                    'attr' => ['class' => "form-control",'rows'=>"3",'resize'=> false]
+                    'attr' => ['class' => "form-control",'rows'=>"3"]
                 ]
             )->add(
                 'save',
-                SubmitType::class,
+                ButtonType::class,
                 [
                     'label' => 'Отправить',
-                    'attr' => ['class' => "btn btn-success mt-2"]
+                    'attr' => ['class' => "btn btn-secondary mt-2"]
                 ]
             )
             ->getForm();

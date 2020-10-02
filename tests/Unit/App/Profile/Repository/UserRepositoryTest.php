@@ -20,27 +20,27 @@ class UserRepositoryTest extends DoctrineTestCase
         $this->userRepository = $this->em->getRepository(User::class);
     }
 
-    public function testFindById(){
+    public function testFindById()
+    {
         $this->assertNull($this->userRepository->findById(1));
-
-        $user = new User();
-        $user->setName('test');
-
-        $this->userRepository->create($user);
-
-        $this->assertEquals(1, $user->getId());
     }
 
-    public function testCreateFind()
+    public function testFindByName()
     {
         $this->assertNull($this->userRepository->findByName('test'));
+    }
 
+    public function testCreate(){
+        $date= new \DateTimeImmutable();
         $user = new User();
         $user->setName('test');
+        $user->setLastVisit($date);
 
         $this->userRepository->create($user);
 
         $this->assertEquals(1, $user->getId());
         $this->assertEquals('test', $user->getName());
+        $this->assertEquals($date->format('Y-m-d H:i:s'), $user->getLastVisit()->format('Y-m-d H:i:s'));
     }
+
 }

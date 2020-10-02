@@ -2,50 +2,50 @@
 {% block body%}
     <div class="container h-100 justify-content: space-between;">
         <nav class="navbar navbar-expand-lg HeaderColor border">
-            <a class=" col-md-10 RedBoldText" href="#">BORSChat</a>
-            <div class="collapse navbar-collapse col-md-2" id="navbarTogglerDemo02">
+            <a class=" col-md-10 red-bold" href="#">BORSChat</a>
+            <div class="collapse navbar-collapse col-md-2">
                 <p class="nav-link m-0 pr-2"></p>
                 <form class="form-inline my-2 my-lg-0">
                     <a class="btn btn btn-secondary my-2 my-sm-0" href="{{ path('profile_logout')}}" >Выйти</a>
                 </form>
             </div>
         </nav>
-        <div class="container HomeMain">
+        <div class="container home-main">
             <div class="row">
-                    <div class="RoomBox">
-                        <div class="HomeLink">
-                            <p class="TextHeaderColumn">Выбрать комнату:</p>
+                    <div class="room-box">
+                        <div class="home-link">
+                            <p class="text-header-column">Выбрать комнату:</p>
                         </div>
-                        <a class="RoomLink" href="#">Комната №</a>
-                        <a class="RoomLink" href="#">Комната №</a>
-                        <a class="RoomLink" href="#">Комната №</a>
-                        <a class="RoomLink" href="#">Комната №</a>
-                        <a class="RoomLink" href="#">Комната №</a>
+                        <a class="room-link" href="#">Комната №</a>
+                        <a class="room-link" href="#">Комната №</a>
+                        <a class="room-link" href="#">Комната №</a>
+                        <a class="room-link" href="#">Комната №</a>
+                        <a class="room-link" href="#">Комната №</a>
                     </div>
-                    <div class="ContentBox">
-                                <div class="Profile">
-                                    <p class="m-0 RedBoldText">{{app.user.name}}</p>
-                                    <p class="m-0">Заходил:<span class="date">{{app.session.get('lastVisit')|date("H:i:s d.m.Y")}}</span></p>
+                    <div class="content-box">
+                                <div class="profile">
+                                    <p class="m-0 red-bold">{{app.user.name}}</p>
+                                    <p class="m-0">Заходил:<span class="date">{{app.session.get('lastVisit')|date("H:i d-n-Y")}}</span></p>
                                 </div>
-                                <div class="mainBlock">
+                                <div class="main-block">
                                             <div class="chat-messages" >
-                                                {% for message in messages %}
-                                                    <div class="messages" style="{% if  message.user.id  == app.user.id %} background-color: white; float: right;
-                                            {% else %} background-color: #dae7f5; float: left; {% endif %}">
-                                                        <p class="userName">{{ message.user.name }}</p>
-                                                        <p class="message">{{ message.message }}</p>
-                                                        <p class="date">{{ message.createdat |date("H:i:s d.m/Y") }}</p>
-                                                    </div>
-                                                {% endfor %}
+                                                <div class="show-more-messages">
+                                                <a href="#" id="link-show-more-messages" class="link-show-more-messages">••• показать еще •••</a>
+                                                </div>
+                                                <script type="text/javascript"> var currentId = {{ app.user.id }}</script>
+                                                    <div id="get-more-messages"></div>
+                                                    <div id="get-first-messages"></div>
                                             </div>
                                             <div class="chat-form">
                                                 {{ form_start(formMessage) }}
                                                 {{ form_widget(formMessage) }}
                                                 {{ form_end(formMessage) }}
+                                                <div class="error-mess" id="errorMess"></div>
                                             </div>
                                 </div>
                     </div>
             </div>
         </div>
     </div>
+    <script src="/js/main.js"></script>
 {% endblock %}

@@ -46,4 +46,27 @@ class MessageTest extends TestCase
         $message->setUser($user);
         $this->assertEquals($user, $message->getUser());
     }
+
+    public function testToArray()
+    {
+        $message = new Message();
+        $user= new User();
+        $date = new \DateTimeImmutable();
+
+        $helper = new TestPrivateHelper($message);
+        $helperUser = new TestPrivateHelper($user);
+        $helper->set('id', 1);
+        $helper->set('message', 'test message');
+        $helper->set('createdAt',$date);
+        $helperUser->set('id',1);
+        $helperUser->set('name','test');
+        $helper->set('user',$user);
+
+        $test['id']= $message->getId();
+        $test['message']= $message->getMessage();
+        $test['createdAt']= $message->getCreatedAt();
+        $test['user']= $user;
+        $result=$message->toArray();
+        $this->assertEquals($test, $result);
+    }
 }

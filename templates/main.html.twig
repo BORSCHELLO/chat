@@ -2,11 +2,17 @@
 {% block body%}
     <div class="container h-100 justify-content: space-between;">
         <nav class="navbar navbar-expand-lg HeaderColor border">
-            <a class=" col-md-10 red-bold" href="#">BORSChat</a>
-            <div class="collapse navbar-collapse col-md-2">
+            <a class=" col-md-8 red-bold" href="#">BORSChat</a>
+            <div class="collapse navbar-collapse col-md-4">
                 <p class="nav-link m-0 pr-2"></p>
                 <form class="form-inline my-2 my-lg-0">
-                    <a class="btn btn btn-secondary my-2 my-sm-0" href="{{ path('profile_logout')}}" >Выйти</a>
+                    <div class="row">
+                    <div class="profile">
+                        <p class="m-0 red-bold">{{app.user.name}}</p>
+                        <p class="m-0">Заходил:<span class="date">{{app.session.get('lastVisit')|date("H:i d-n-Y")}}</span></p>
+                    </div>
+                    <a class="btn btn btn-secondary my-2 my-sm-0 ml-2" href="{{ path('profile_logout')}}" >Выйти</a>
+                    </div>
                 </form>
             </div>
         </nav>
@@ -23,10 +29,7 @@
                         <a class="room-link" href="#">Комната №</a>
                     </div>
                     <div class="content-box">
-                                <div class="profile">
-                                    <p class="m-0 red-bold">{{app.user.name}}</p>
-                                    <p class="m-0">Заходил:<span class="date">{{app.session.get('lastVisit')|date("H:i d-n-Y")}}</span></p>
-                                </div>
+
                                 <div class="main-block">
                                             <div class="chat-messages" >
                                                 <div class="show-more-messages">

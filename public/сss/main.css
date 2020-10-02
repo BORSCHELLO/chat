@@ -40,10 +40,10 @@
 }
 .chat-form{
     position: absolute;
-    bottom: 5.43%;
+    bottom: 0;
     right: 0;
     left: 0;
-    height: 15.43%;
+    height: 14.5%;
     padding: 5px;
     background-color: #dae7f5;
 }
@@ -150,9 +150,8 @@
 }
 
 .profile{
-    padding-left: 8px;
-    padding-bottom: 3px;
-    border-bottom: solid red 1px;
+
+
 }
 
 .HeaderColor{
